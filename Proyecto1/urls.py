@@ -20,11 +20,15 @@ from Proyecto1.views import saludo
 from Proyecto1.views import despedida
 from Proyecto1.views import damefecha
 from Proyecto1.views import calculaEdad
+from Proyecto1.views import curso
+from Proyecto1.views import cursoCSS
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('saludo/', saludo),
     path('despedida/',despedida),
     path('fecha/',damefecha),
-    path('edades/<int:edad>/<int:agno>',calculaEdad)
+    path('edades/<int:edad>/<int:agno>',calculaEdad),
+    path('CursoC/',curso),
+    path('cursoCSS/',cursoCSS),
 ]

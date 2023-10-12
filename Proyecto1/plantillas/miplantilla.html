@@ -1,12 +1,39 @@
 <html>
     <body>
+        {% include "superior /barra.html" %}
     <h1 style="color: blue;
             text-align: center;
             margin-top: 50px;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
     Hola alumnos estamos viendo nuestra primera plantilla
     </h1>
-    <p>El nombre del profesosr es:  {{nombre_persona}} {{apellido_persona}}</p>
+
+    {% if nombre_persona == 'juan' %}
+    <p>El curso lo imparte el profesor titular</p>
+
+    {% else %}
+
+    <p>El curso lo imparte el profesor suplete</p>
+
+    {% endif %}
+
+
+
+
+    <p>El nombre del profesosr es:  {{nombre_persona.upper}} {{apellido_persona.upper}}</p><!--  poner en mayuscula  lower en minuscula -->
     <p>Estamos viendo el tema de las plantillas a d&iacute;a:   {{momento_actual.time}}</p>
+    <p>{{temas.1}}</p>
+    <p>
+        <ul>
+         {% if  temas %} <!--condiciones if con platillas con django -->
+                {% for elTema  in temas %} <!-- buqle for con plantillas con djago -->
+                <li>{{elTema|first|upper}}</li>  
+
+                {% endfor %}
+        {% else %}
+                <p>No hay elementos que mostrar</p>
+        {% endif %}
+        </ul>
+    </p>
     </body>
     </html>

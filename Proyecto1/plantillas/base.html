@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %} {% endblock %}
+    </title>
+</head>
+<body>
+    <h1 style="background-color: rgb(149, 149, 224); color: white; text-align: center;">Hotel Lodging</h1>
+    {% include "superior/barra.html" %}
+    <h3 style="text-align: center;">Usos de programacion, y diseño wed</h3>
+    {% block content %} 
+    
+    
+    {% endblock %}
+    <p style="background-color: rgb(149, 149, 224); color: white; text-align: center; margin-top: 23%;">Hotel de paga, Gracias por su visita</p>
+</body>
+</html>
