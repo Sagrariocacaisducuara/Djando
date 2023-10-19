@@ -53,6 +53,11 @@ def calculaEdad(request, agno):
     return HttpResponse(documento)
 
 
+def index(request):
+    return render(request,"index.html")
+    
+
+
 # def calculaEdad(request,edad, agno):
 
 #     #edadActual=18

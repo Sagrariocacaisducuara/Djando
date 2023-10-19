@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LODGING</title>
+    <link rel="stylesheet" href="/Proyecto1/Proyecto1/static/css/img/index.css">
+    <link rel="stylesheet" href="./js/code.jquery.com_jquery-3.7.1.min.js">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+</head>
+<style>
+    /* Estilos globales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/* Estilo de scroll suave en la página */
+ html {
+    scroll-behavior: smooth;
+} 
+
+/* Estilos del cuerpo de la página */
+body {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+/* Estilos de los bloques de contenido */
+.bloque {
+    width: 120vw;
+    padding-top: 50px;
+    flex-shrink: 0;
+    height: 100vh;
+}
+
+/* Estilos del encabezado (header) */
+header {
+    position: fixed;
+    top: 0;
+    padding: 10px 0;
+    width: 100%;
+    background-color: #2e2e2e;
+    
+}
+
+/* Estilos de los enlaces de navegación en el encabezado */
+
+#logo {
+    float: left; /* Coloca el logotipo a la izquierda */
+    margin: 10px 20px; /* Ajusta el margen según sea necesario */
+    padding: 10px;
+}
+
+#logo img {
+    width: 200px; /* Ajusta el tamaño del logotipo según tus preferencias */
+    height: 50%; /* Ajusta la altura automáticamente para mantener la proporción */
+    border-radius: 40px;
+}
+
+/* Estilos de los enlaces de navegación en el encabezado */
+header nav {
+    float: right; /* Coloca el menú de navegación a la derecha */
+}
+
+header nav a {
+    display: inline-block;
+    margin: 20px 20px 0 20px; /* Ajusta el margen superior para separar los enlaces */
+    text-decoration: none;
+    color: bisque;
+    padding: 20px;
+    border-radius: 1px;
+    font-weight: bold;
+    background-color: #504f4f; /* Fondo de color gris oscuro */
+    border-radius: 13px;
+    transition: background-color 0.3s; /* Transición de color de fondo */
+}
+
+header nav a:hover {
+    background-color: #555; /* Cambia el color de fondo en hover */
+}
+/* Estilo para el enlace seleccionado */
+.selected {
+    color: rgb(197, 243, 227);
+    transition: .3s;
+}
+
+/* Estilos banner */
+#banner {
+    margin-top: 12%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 522px; /* Ajusta la altura según el tamaño de .contenedor-banner */
+    z-index: -1;
+    background: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.contenedor-banner {
+    margin: auto;
+    position: relative;
+    top: 10px;
+    height: 503px;
+    overflow: hidden;
+    box-shadow: 1px 1px 1px 10px rgb(8, 8, 8);
+    border-radius: 5px;
+}
+
+.caja {
+    width: 300%;
+    height: 270px;
+    display: flex;
+}
+
+.section_caja {
+    width: 100%;
+}
+
+.img_caja {
+    display: block;
+    width: 100%; /* Ajusta el ancho al 100% del contenedor */
+    height: auto; /* Ajusta la altura automáticamente para mantener la proporción */
+}
+
+.btn-atras,
+.btn-adelante {
+    width: 40px;
+    height: 40px;
+    background: wheat;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 40px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 50%;
+    font-family: sans-serif;
+    cursor: pointer;
+}
+
+.btn-atras:hover,
+.btn-adelante:hover {
+    background: white;
+}
+
+.btn-atras {
+    left: 10px;
+}
+
+.btn-adelante {
+    right: 10px;
+}
+
+
+.contenedor-sobre-nosotros{
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.imagen-about-us{
+    width: 48%;
+}
+
+.sobre-nosotros .contenido-textos{
+    width: 48%;
+}
+
+.contenido-textos h3{
+    margin-bottom: 15px;
+}
+
+.contenido-textos h3 span{
+    background: #4554f3;
+    color: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
+    margin-right: 5px;
+}
+
+.contenido-textos p{
+    padding: 0px 0px 30px 15px;
+    font-weight: 300;
+    text-align: justify;
+}
+
+.titulo2 {
+    margin-top: 60%;
+    color: #080808;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 60px;
+    
+}
+
+.titulo3 {
+    margin-top: 2%;
+    color: #080808;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 60px;
+    
+}
+.portafolio{
+    margin-top: 5%;
+    background: #0549b7;
+}
+
+.galeria-port{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.imagen-port{
+    width: 24%;
+    margin-bottom: 10px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
+}
+
+.imagen-port > img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hover-galeria{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    transform: scale(0);
+    background: hsla(273,91%,27%, 0.7);
+    transition: transform .5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hover-galeria img{
+    width: 50px;
+}
+
+.hover-galeria p{
+    color: #fff;
+}
+
+.imagen-port:hover .hover-galeria{
+    transform: scale(1);
+}
+
+/* Estilos para el footer */
+footer {
+    margin-top: 2%;
+    background-color: #2e2e2e;
+    color: bisque;
+    padding: 20px 0;
+}
+
+.contenedor-footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.content-foo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.content-foo h4 {
+    font-size: 18px;
+}
+
+.content-foo p {
+    font-size: 16px;
+}
+
+.titulo-final {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.titulo-final a {
+    color: #fff; /* Cambia el color de los enlaces si los tienes en el texto del footer */
+    text-decoration: none;
+}
+
+.titulo-final a:hover {
+    text-decoration: underline;
+}
+</style>
+<body>
+    <header>
+        <div id="logo"> <!-- Nuevo div para el logotipo -->
+            <img src="./img/portada2.png" alt="Logo" width="100"> <!-- Cambia la ruta y el tamaño del logo -->
+        </div>
+
+
+        <nav>
+            <!-- Enlaces de navegación -->
+            
+            <a href="#banner" onclick="seleccionar(this)" class="selected">Inicio</a>
+            <a href="#nuestro" onclick="seleccionar(this)">Nuestro Hotel</a>
+            <!-- Icono del menú -->
+            
+            <a href="#" onclick="seleccionar(this)">Servicios</a>
+            <a href="#" onclick="seleccionar(this)">Reservas</a>
+            <a href="#" onclick="seleccionar(this)">inicio secion</a>
+            <a href="#" onclick="seleccionar(this)">Registrarse</a>
+        </nav>
+    </header>
+    <section id="banner">
+        <div>
+            <div id="contenedor-banner" class="contenedor-banner">
+                <div id="caja" class="caja">
+                    <section class="section_caja"><img src="./img/hotel1.2.png" alt="" class="img_caja"></section>
+                    <section class="section_caja"><img src="./img/hotel1.3.png" alt="" class="img_caja"></section>
+                    <section class="section_caja"><img src="./img/hotel1.5.png" alt="" class="img_caja"></section>
+
+
+                </div>
+
+                <div id="btn-atras" class="btn-atras">&#60;</div>
+                <div id="btn-adelante" class="btn-adelante">&#62;</div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="nuestro" class="contenedor sobre-nosotros">
+        <h2 class="titulo2">Nuestro Hotel</h2>
+        <div class="contenedor-sobre-nosotros">
+            
+            <img src="./img/proyecto.png" alt="" class="imagen-about-us">
+            <div class="contenido-textos">
+                <h3><span>1</span>el mejor hotel para descansar</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt veniam eius aspernatur ad
+                    consequuntur aperiam minima sed dicta odit numquam sapiente quam eum, architecto animi pariatur,
+                    velit doloribus laboriosam ut.</p>
+                <h3><span>2</span>servicios de calidad</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt veniam eius aspernatur ad
+                    consequuntur aperiam minima sed dicta odit numquam sapiente quam eum, architecto animi pariatur,
+                    velit doloribus laboriosam ut.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="portafolio">
+        <div class="contenedor">
+            <h2 class="titulo3">Portafolio</h2>
+            <div class="galeria-port">
+                <div class="imagen-port">
+                    <img src="./img/portafolio.webp" alt="">
+                    
+                </div>
+                <div class="imagen-port">
+                    <img src="./img/portafolio2.jpg" alt="">
+                    
+                </div>
+                <div class="imagen-port">
+                    <img src="./img/portafolio3.jpg" alt="">
+                    
+                </div>
+            
+               
+            </div>
+        </div>
+    </section>
+    
+
+    
+
+
+
+    
+    <!-- enlaces js -->
+    <script src="./js/banner.js"></script>
+    <script src="./js/index.js"></script>
+
+    <footer>
+        <div class="contenedor-footer">
+            <div class="content-foo">
+                <h4>telefono</h4>
+                <p>8296312</p>
+            </div>
+            <div class="content-foo">
+                <h4>Email</h4>
+                <p>8296312</p>
+            </div>
+            <div class="content-foo">
+                <h4>Locacion</h4>
+                <p>8296312</p>
+            </div>
+        </div>
+        <h2 class="titulo-final">&copy; Grupo de poryecto LODGING / Romario, Luz,Sagrario, Ruben </h2>
+    </footer>
+</body>
+</html>
